@@ -14,24 +14,13 @@ class Solution {
     
     private boolean inOrder(TreeNode s, TreeNode t)
     {
-        boolean res= false;
         if (s == null)
             return checkIfsame(s,t);
-        if ( s.val == t.val)
-        {
-          res = checkIfsame (s,t);
-        }
-        
-        if (res)
-            return true;
-        else
-        {
-            res = inOrder(s.left, t);
-            if (res)
-                return true;
-            else
-             return inOrder(s.right, t);  
-        }
+       boolean res = checkIfsame(s,t) ;
+       if (res)
+           return true;
+       else
+           return inOrder(s.left, t) || inOrder(s.right, t);
     }
     
     private boolean checkIfsame (TreeNode s, TreeNode t)
