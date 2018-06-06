@@ -20,30 +20,22 @@ class Solution {
     private void helper(List<String> res, StringBuilder path, TreeNode root)
     {
         
+        if (root == null)
+            return;
         if (root.left == null && root.right == null)
         {
             path.append(root.val);
             res.add(path.toString());
+            path.delete(path.lastIndexOf(""+(root.val)), path.length());
             return;
         }
-            
-        else
-        {
+           
             path.append(root.val);
             path.append("->");
-            if (root.left != null)
-            {
-                 helper(res,path,root.left);
-                path.delete(path.lastIndexOf(""+(root.left.val)), path.length());
-            }
-            
-            if (root.right !=null)
-            {
-                helper(res,path,root.right);
-                path.delete(path.lastIndexOf(""+(root.right.val)), path.length());
-            }
-            
-        }
+            helper(res,path,root.left);
+            helper(res,path,root.right);
+            path.delete(path.lastIndexOf(""+(root.val)), path.length());
+           
         return;
     }
 }
