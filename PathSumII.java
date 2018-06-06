@@ -37,7 +37,6 @@ class Solution {
         helper(res, root.left, sum - root.val, path);
         helper(res, root.right, sum - root.val, path);
         path.remove(path.size()-1);
-        
         return;
     }
 }
